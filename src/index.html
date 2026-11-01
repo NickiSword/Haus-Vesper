@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Haus Vesper</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="gl"></canvas>
+  <canvas id="grain" width="128" height="72"></canvas>
+  <div id="vignette"></div>
+  <div id="fear"></div>
+
+  <div id="hud" hidden>
+    <div class="row">
+      <div><span class="label">Sicherungen</span><div class="slots" id="slots"><span class="slot"></span><span class="slot"></span><span class="slot"></span><span class="slot"></span></div></div>
+      <div id="clock">00:00</div>
+    </div>
+    <div id="hint"></div>
+    <div class="row">
+      <div class="bars">
+        <div><span class="label">Akku</span><div class="bar" id="batBar"><i id="batFill"></i></div></div>
+        <div><span class="label">Atem</span><div class="bar stam" id="stamBar"><i id="stamFill"></i></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="touch" hidden>
+    <div id="lookzone"></div>
+    <div id="stick"><div id="knob"></div></div>
+    <button class="tbtn" id="tLight" type="button">Licht</button>
+    <button class="tbtn" id="tSprint" type="button">Rennen</button>
+  </div>
+
+  <section id="overlay">
+    <div class="panel" id="viewMain">
+      <h1 id="ovTitle">Haus Vesper</h1>
+      <p class="lead" id="ovLead">Der Strom ist ausgefallen. Vier Sicherungen halten die Tür am anderen Ende des Hauses verschlossen. Etwas geht hier schon länger um.</p>
+      <div class="btns">
+        <button class="btn" id="ovBtn" type="button">Spielen</button>
+        <button class="btn ghost" id="setBtn" type="button">Einstellungen</button>
+        <button class="btn ghost" id="menuBtn" type="button" hidden>Hauptmenü</button>
+        <button class="btn ghost" id="quitBtn" type="button" hidden>Beenden</button>
+      </div>
+      <p class="fine" id="ovFine"></p>
+    </div>
+    <div class="panel" id="viewSettings" hidden>
+      <h2>Einstellungen</h2>
+      <div class="group"><h3>Ton</h3>
+        <label class="setrow" for="vol"><span>Lautstärke</span><input id="vol" type="range" min="0" max="100" step="5" value="100"><output id="volOut" for="vol">100 %</output></label>
+      </div>
+      <div class="group"><h3>Grafik</h3>
+        <div class="setrow"><span id="qLbl">Qualität</span><div class="seg" id="qSeg" role="group" aria-labelledby="qLbl"><button type="button" data-q="low" aria-pressed="false">Niedrig</button><button type="button" data-q="mid" aria-pressed="false">Mittel</button><button type="button" data-q="high" aria-pressed="false">Hoch</button></div></div>
+        <label class="setrow" for="fov"><span>Sichtfeld</span><input id="fov" type="range" min="60" max="100" step="1" value="72"><output id="fovOut" for="fov">72°</output></label>
+        <label class="setrow" for="bri"><span>Helligkeit</span><input id="bri" type="range" min="50" max="200" step="5" value="100"><output id="briOut" for="bri">100 %</output></label>
+        <label class="setrow" for="grainChk"><span>Filmkorn</span><input id="grainChk" type="checkbox" checked></label>
+      </div>
+      <div class="group"><h3>Steuerung</h3>
+        <label class="setrow" for="sens"><span>Empfindlichkeit</span><input id="sens" type="range" min="40" max="200" step="5" value="100"><output id="sensOut" for="sens">100 %</output></label>
+        <dl class="keys" id="ovKeys">
+          <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Gehen</dd>
+          <dt><kbd>Maus</kbd></dt><dd>Umschauen</dd>
+          <dt><kbd>Shift</kbd></dt><dd>Rennen (laut, kostet Atem)</dd>
+          <dt><kbd>F</kbd></dt><dd>Taschenlampe an/aus</dd>
+          <dt><kbd>+</kbd><kbd>-</kbd><kbd>M</kbd></dt><dd>Lauter, leiser, Ton aus</dd>
+          <dt><kbd>Esc</kbd></dt><dd>Pause und Einstellungen</dd>
+        </dl>
+      </div>
+      <button class="btn" id="backBtn" type="button">Zurück</button>
+    </div>
+  </section>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

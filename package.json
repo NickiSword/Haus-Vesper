@@ -1,0 +1,57 @@
+{
+  "name": "haus-vesper",
+  "productName": "Haus Vesper",
+  "version": "0.6.0",
+  "description": "3D-Horrorspiel",
+  "main": "main.js",
+  "author": "NickiSword",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis",
+    "publish": "electron-builder --win nsis --publish always"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
+  "build": {
+    "appId": "de.nickisword.hausvesper",
+    "productName": "Haus Vesper",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "src/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Haus-Vesper-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "NickiSword",
+        "repo": "Haus-Vesper"
+      }
+    ]
+  }
+}
