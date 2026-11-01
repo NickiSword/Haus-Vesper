@@ -1,7 +1,7 @@
 {
   "name": "haus-vesper",
   "productName": "Haus Vesper",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "3D-Horrorspiel",
   "main": "main.js",
   "author": "NickiSword",
